@@ -12,11 +12,9 @@ class Auth():
         """ implement later """
         return False
 
-
     def authorization_header(self, request=None) -> str:
         """ implement later """
         return None
-
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ implement later """
