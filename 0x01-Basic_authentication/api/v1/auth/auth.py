@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+""" API authentication class module """
+
+
+from flask import request
+
+
+class Auth():
+    """ Authentication class """
+    def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
+        """ implement later """
+        return False
+
+
+    def authorization_header(self, request=None) -> str:
+        """ implement later """
+        return None
+
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """ implement later """
+        return None
