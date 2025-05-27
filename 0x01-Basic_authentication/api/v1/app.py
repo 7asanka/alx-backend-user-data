@@ -41,6 +41,7 @@ def forbidden(error) -> str:
 
 @app.before_request
 def authenticate_user():
+    """ autherticate a user prior to a request """
     if auth is None:
         return
     excluded_paths = [
