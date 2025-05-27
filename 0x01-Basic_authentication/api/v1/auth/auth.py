@@ -25,7 +25,14 @@ class Auth():
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ implement later """
+        """ Request validation """
+        if request is None:
+            return None
+        for path in request.path:
+            if path != "Autorization":
+                continue
+            else:
+                return path
         return None
 
     def current_user(self, request=None) -> TypeVar('User'):
