@@ -44,3 +44,15 @@ class DB:
             return self._session.query(User).filter_by(**kwargs).one()
         except (NoResultFound, InvalidRequestError):
             raise
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """Updates user attributes by user ID with provided fields"""
+        user = self.find_user_by(id=user_id)
+
+        for key, value in kwargs.items():
+            if not hasattr(user, key):
+                raise ValueError(f"Invalid field: {key}")
+            setattr(user, key, value)
+            
+        self._session.commit()
+
