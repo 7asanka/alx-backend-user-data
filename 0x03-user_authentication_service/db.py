@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """DB module
 """
-from sqlalchemy import create_engine, tuple_
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm.session import Session
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.orm.session import Session
@@ -41,7 +40,7 @@ class DB:
             self._session.commit()
         except Exception:
             self._session.rollback()
-            new_user = None
+            raise
         return new_user
 
     def find_user_by(self, **kwargs) -> User:
