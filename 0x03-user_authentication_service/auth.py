@@ -2,6 +2,7 @@
 """ Auth module """
 import bcrypt
 import uuid
+from typing import Union
 from sqlalchemy.orm.exc import NoResultFound
 
 from user import User
@@ -60,7 +61,7 @@ class Auth:
         self._db.update_user(user.id, session_id=session_id)
         return session_id
 
-    def get_user_from_session_id(session_id: str) -> User:
+    def get_user_from_session_id(session_id: str) -> Union[User, None]
         """returns the User corresponding with the session_id"""
         if session_id is None:
             return None
