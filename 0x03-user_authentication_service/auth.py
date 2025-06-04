@@ -79,7 +79,11 @@ class Auth:
 
     def get_reset_password_token(self, email: str) -> str:
         """generates a reset password token"""
-        user = self._dp.find_user_by(email=email)
+        user = None
+        try:
+            user = self._dp.find_user_by(email=email)
+        except NoResultFound:
+            user = None
         if user is None:
             raise ValueError
         reset_token = _generate_uuid()
