@@ -81,7 +81,7 @@ class Auth:
         """generates a reset password token"""
         user = None
         try:
-            user = self._dp.find_user_by(email=email)
+            user = self._db.find_user_by(email=email)
         except NoResultFound:
             user = None
         if user is None:
